@@ -1,0 +1,30 @@
+# Tinkermail Node.js SDK
+
+Tinkermail is a transactional and marketing email sending platform for the growing businesses.
+
+> WARNING: The platform is currently in closed beta, invite only phase!
+
+## Installation
+
+```sh
+$ npm install tinkermail-node
+```
+
+## Usage
+
+```javascript
+const tinkerMail = require('tinkermail-node')('YOUR_API_KEY');
+
+// Push your contacts to tinkermail with as many attributes as you want
+await tinkerMail.updateContact({
+    email: 'johndoe@example.com',
+    firstName: 'John',
+    lastName: 'Doe',
+    onboarded: false
+});
+
+// Send them emails using predefined templates
+await tinkerMail.sendMail('johndoe@example.com', 'customer-welcome-email', {
+    username: 'john_doe'
+});
+```

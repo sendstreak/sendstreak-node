@@ -1,0 +1,45 @@
+{
+  "author": "tinkermail.io",
+  "dependencies": {
+    "@types/lodash": "4.14.159",
+    "@types/mongodb": "3.5.25",
+    "@types/node-fetch": "2.5.8",
+    "lodash": "4.17.20",
+    "node-fetch": "2.6.1",
+    "rimraf": "3.0.2",
+    "typescript": "3.9.7"
+  },
+  "description": "Node.js SDK for tinkermail.io",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "3.9.0",
+    "@typescript-eslint/parser": "3.9.0",
+    "eslint": "7.7.0",
+    "eslint-config-standard": "14.1.1",
+    "eslint-config-tinkermail": "git+ssh://git@github.com/tinkermail/eslint-config-tinkermail.git",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
+    "husky": "4.3.6"
+  },
+  "homepage": "https://tinkermail.io",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "keywords": [],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "name": "tinkermail-node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tinkermail/tinkermail-node.git"
+  },
+  "scripts": {
+    "build": "rimraf lib && tsc",
+    "lint": "eslint --ext .ts .",
+    "postinstall": "npm run build"
+  },
+  "version": "1.0.0"
+}
