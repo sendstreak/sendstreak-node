@@ -2,7 +2,7 @@
 
 Tinkermail is a transactional and marketing email sending platform for the growing businesses.
 
-> WARNING: The platform is currently in closed beta, invite only phase!
+> NOTE: The platform is currently in closed beta!
 
 ## Installation
 

@@ -1,3 +1,3 @@
-export default interface Contact extends Record<string, string | boolean | number | Date> {
+export default interface Contact extends Record<string, Date | boolean | number | string> {
     email: string;
 }

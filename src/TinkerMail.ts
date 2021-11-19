@@ -1,10 +1,11 @@
-import Contact from 'Contact';
 import fetch from 'node-fetch';
+
+import type Contact from 'Contact';
 
 const RESPONSE_UNAUTH = 401;
 
 export default class TinkerMailSdk {
-    private readonly variables: Record<string, string | number> = {
+    private readonly variables: Record<string, number | string> = {
         server: 'https://api.tinkermail.io'
     };
 
@@ -39,7 +40,7 @@ export default class TinkerMailSdk {
      * @param name The name of the variable to update.
      * @param value The new value for the variable.
      */
-    public set(name: string, value: string | number): void {
+    public set(name: string, value: number | string): void {
         this.variables[ name ] = value;
     }
 
