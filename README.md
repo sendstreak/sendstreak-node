@@ -13,7 +13,8 @@ $ npm install tinkermail-node
 ## Usage
 
 ```javascript
-const tinkerMail = require('tinkermail-node')('YOUR_API_KEY');
+const TinkerMail = require('tinkermail-node');
+const tinkerMail = new TinkerMail('YOUR_API_KEY');
 
 // Push your contacts to tinkermail with as many attributes as you want
 await tinkerMail.updateContact({

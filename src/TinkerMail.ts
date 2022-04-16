@@ -4,7 +4,7 @@ import type Contact from 'Contact';
 
 const RESPONSE_UNAUTH = 401;
 
-export default class TinkerMailSdk {
+export default class TinkerMail {
     private readonly variables: Record<string, number | string> = {
         server: 'https://api.tinkermail.io'
     };
