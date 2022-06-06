@@ -1,7 +1,7 @@
 {
   "author": "tinkermail.io",
   "dependencies": {
-    "node-fetch": "2.6.1"
+    "node-fetch": "3.2.5"
   },
   "description": "Node.js SDK for tinkermail.io",
   "devDependencies": {
@@ -10,7 +10,7 @@
     "@typescript-eslint/parser": "5.2.0",
     "eslint": "7.32.0",
     "eslint-config-standard": "16.0.3",
-    "eslint-config-tinkermail": "git+ssh://git@github.com/tinkermail/eslint-config-tinkermail.git#4e0a652ca2e0dd178afa7fd51ef664881ce019b6",
+    "eslint-config-tinkermail": "https://github.com/tinkermail/eslint-config-tinkermail.git#4e0a652ca2e0dd178afa7fd51ef664881ce019b6",
     "eslint-import-resolver-typescript": "2.5.0",
     "eslint-plugin-import": "2.25.2",
     "eslint-plugin-node": "11.1.0",
@@ -39,5 +39,5 @@
     "prepack": "npm run build"
   },
   "types": "./lib/index.d.ts",
-  "version": "2.0.1"
+  "version": "2.0.2"
 }

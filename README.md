@@ -1,8 +1,6 @@
 # Tinkermail Node.js SDK
 
-Tinkermail is a transactional and marketing email sending platform for the growing businesses.
-
-> NOTE: The platform is currently in closed beta!
+[Tinkermail](https://www.tinkermail.io) is a simple interface that lets you integrate quickly to Amazon SES, Gmail or any other SMTP server to send your transactional emails easily and pretty much for FREE.
 
 ## Installation
 
