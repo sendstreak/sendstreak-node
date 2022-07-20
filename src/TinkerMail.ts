@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 
 import type Contact from 'Contact';
+import type { AttribType } from 'Contact';
 
 const RESPONSE_UNAUTH = 401;
 
@@ -25,7 +26,7 @@ export default class TinkerMail {
     public sendMail(
         rcptAddress: string,
         templateSlug: string,
-        variables: Record<string, string>
+        variables: Record<string, AttribType>
     ): Promise<void> {
         return this.invokeTinkermailAPI('/v1/messages', {
             rcpt: rcptAddress,
