@@ -1,9 +1,6 @@
-import fetch from 'node-fetch';
-
-import type Contact from 'Contact';
-import type { AttribType } from 'Contact';
-
-const RESPONSE_UNAUTH = 401;
+import type Contact from './Contact';
+import type { AttribType } from './Contact';
+import invokeAPI from './invokeAPI';
 
 export default class TinkerMail {
     private readonly variables: Record<string, number | string> = {
@@ -23,12 +20,12 @@ export default class TinkerMail {
      * @param templateSlug The slug string of the template to use.
      * @param variables Any additional variables needed to fill the template.
      */
-    public sendMail(
+    public async sendMail(
         rcptAddress: string,
         templateSlug: string,
         variables: Record<string, AttribType>
     ): Promise<void> {
-        return this.invokeTinkermailAPI('/v1/messages', {
+        await invokeAPI(this.apiKey, this.variables.server as string, '/v1/messages', {
             rcpt: rcptAddress,
             templateSlug,
             variables
@@ -52,37 +49,13 @@ export default class TinkerMail {
      *
      * @param contact The partial contact object to update (or create) the contact with.
      */
-    public updateContact(contact: Contact): Promise<void> {
+    public async updateContact(contact: Contact): Promise<void> {
         const { email } = contact;
 
         if (!email || !(/.+@.+\..+/u).exec(email)) {
             throw new Error('Tinkermail contacts must have an \'email\' field with a valid email address.');
         }
 
-        return this.invokeTinkermailAPI('/v1/contacts', contact);
-    }
-
-    private async invokeTinkermailAPI(path: string, body: Record<string, unknown>): Promise<void> {
-        try {
-            const response = await fetch(`${this.variables.server}${path}`, {
-                body: JSON.stringify(body),
-                headers: {
-                    /* eslint-disable @typescript-eslint/naming-convention */
-                    Authorization: `Bearer ${this.apiKey}`,
-                    'Content-Type': 'application/json'
-                    /* eslint-enable @typescript-eslint/naming-convention */
-                },
-                method: 'POST'
-            });
-
-            switch (response.status) {
-                case RESPONSE_UNAUTH:
-                    throw new Error('Invalid API key provided');
-                default:
-                    // Nothing to do here
-            }
-        } catch (error) {
-            console.error(`Error invoking the tinkermail API. Error message: ${(error as Error).message}`);
-        }
+        await invokeAPI(this.apiKey, this.variables.server as string, '/v1/contacts', contact);
     }
 }

@@ -2,16 +2,20 @@
 
 [Tinkermail](https://www.tinkermail.io) is a simple interface that lets you integrate quickly to Amazon SES, Gmail or any other SMTP server to send your transactional emails easily and pretty much for FREE.
 
+## New package!
+
+Now with no dependencies and scoped package name!
+
 ## Installation
 
 ```sh
-$ npm install tinkermail-node
+$ npm install --save-exact @tinkermail/tinkermail-node
 ```
 
 ## Usage
 
 ```javascript
-const TinkerMail = require('tinkermail-node');
+const TinkerMail = require('@tinkermail/tinkermail-node');
 const tinkerMail = new TinkerMail('YOUR_API_KEY');
 
 // Push your contacts to tinkermail with as many attributes as you want

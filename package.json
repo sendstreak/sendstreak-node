@@ -1,8 +1,6 @@
 {
   "author": "tinkermail.io",
-  "dependencies": {
-    "node-fetch": "3.2.5"
-  },
+  "dependencies": {},
   "description": "Node.js SDK for tinkermail.io",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.2.0",
@@ -25,10 +23,16 @@
       "pre-commit": "npm run lint"
     }
   },
-  "keywords": [],
+  "keywords": [
+    "transactional",
+    "email",
+    "aws",
+    "gmail",
+    "smtp"
+  ],
   "license": "Apache-2.0",
   "main": "index.js",
-  "name": "tinkermail-node",
+  "name": "@tinkermail/tinkermail-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/tinkermail/tinkermail-node.git"
@@ -39,5 +43,5 @@
     "prepack": "npm run build"
   },
   "types": "./lib/index.d.ts",
-  "version": "2.0.3"
+  "version": "2.1.1"
 }
