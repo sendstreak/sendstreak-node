@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import http from 'http';
 import https from 'https';
 
@@ -7,7 +8,8 @@ export default function invokeAPI(
     apiKey: string,
     server: string,
     path: string,
-    body: Record<string, unknown>
+    body?: Record<string, unknown>,
+    method?: string
 ): Promise<{ body: string; statusCode: number }> {
     return new Promise((resolve, reject) => {
         try {
@@ -22,17 +24,21 @@ export default function invokeAPI(
                     client = https;
             }
 
-            const postData = JSON.stringify(body);
+            const headers: Record<string, number | string> = {
+                Authorization: `Bearer ${apiKey}`
+            };
+
+            let postData;
+
+            if (body !== undefined) {
+                postData = JSON.stringify(body);
+                headers[ 'Content-Length' ] = Buffer.byteLength(postData);
+                headers[ 'Content-Type' ] = 'application/json';
+            }
 
             const request = client.request(url, {
-                headers: {
-                    /* eslint-disable @typescript-eslint/naming-convention */
-                    Authorization: `Bearer ${apiKey}`,
-                    'Content-Length': Buffer.byteLength(postData),
-                    'Content-Type': 'application/json'
-                    /* eslint-enable @typescript-eslint/naming-convention */
-                },
-                method: 'POST'
+                headers,
+                method: method ?? 'POST'
             }, response => {
                 response.setEncoding('utf8');
 
@@ -59,10 +65,15 @@ export default function invokeAPI(
                 reject(error);
             });
 
-            request.write(postData);
+
+            if (postData !== undefined) {
+                request.write(postData);
+            }
+
             request.end();
         } catch (error) {
             console.error(`Error invoking the tinkermail API. Error message: ${(error as Error).message}`);
+            throw error;
         }
     });
 }

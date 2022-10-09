@@ -3,7 +3,7 @@ import type { AttribType } from './Contact';
 import invokeAPI from './invokeAPI';
 
 export default class TinkerMail {
-    private readonly variables: Record<string, number | string> = {
+    private readonly variables: Record<string, number | string> & { server: string } = {
         server: 'https://api.tinkermail.io'
     };
 
@@ -11,6 +11,15 @@ export default class TinkerMail {
         if (!apiKey) {
             throw new Error('An API key is required to initialize the tinkermail SDK');
         }
+    }
+
+    /**
+     * Deletes a contact from your audience with all the attributes it may have.
+     *
+     * @param email The email of the contact to delete.
+     */
+    public async deleteContact(email: string): Promise<void> {
+        await invokeAPI(this.apiKey, this.variables.server, `/v1/contacts/${email}`, undefined, 'DELETE');
     }
 
     /**
@@ -25,7 +34,7 @@ export default class TinkerMail {
         templateSlug: string,
         variables: Record<string, AttribType>
     ): Promise<void> {
-        await invokeAPI(this.apiKey, this.variables.server as string, '/v1/messages', {
+        await invokeAPI(this.apiKey, this.variables.server, '/v1/messages', {
             rcpt: rcptAddress,
             templateSlug,
             variables
@@ -56,6 +65,6 @@ export default class TinkerMail {
             throw new Error('Tinkermail contacts must have an \'email\' field with a valid email address.');
         }
 
-        await invokeAPI(this.apiKey, this.variables.server as string, '/v1/contacts', contact);
+        await invokeAPI(this.apiKey, this.variables.server, '/v1/contacts', contact);
     }
 }
