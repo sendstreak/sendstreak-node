@@ -72,7 +72,7 @@ export default function invokeAPI(
 
             request.end();
         } catch (error) {
-            console.error(`Error invoking the tinkermail API. Error message: ${(error as Error).message}`);
+            console.error(`Error invoking the SendStreak API. Error message: ${(error as Error).message}`);
             throw error;
         }
     });

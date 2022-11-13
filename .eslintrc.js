@@ -5,7 +5,7 @@ module.exports = {
     node: true
   },
   extends: [
-    'eslint-config-tinkermail'
+    'eslint-config-sendstreak'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {

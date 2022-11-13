@@ -1,3 +1,3 @@
-import TinkerMail from './TinkerMail';
+import SendStreak from './SendStreak';
 
-export default TinkerMail;
+export default SendStreak;

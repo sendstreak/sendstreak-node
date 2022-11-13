@@ -1,14 +1,14 @@
 {
-  "author": "tinkermail.io",
+  "author": "sendstreak.com",
   "dependencies": {},
-  "description": "Node.js SDK for tinkermail.io",
+  "description": "Node.js SDK for SendStreak",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.2.0",
     "@types/node-fetch": "2.5.8",
     "@typescript-eslint/parser": "5.2.0",
     "eslint": "7.32.0",
     "eslint-config-standard": "16.0.3",
-    "eslint-config-tinkermail": "https://github.com/tinkermail/eslint-config-tinkermail.git#4e0a652ca2e0dd178afa7fd51ef664881ce019b6",
+    "eslint-config-sendstreak": "https://github.com/sendstreak/eslint-config-sendstreak.git#692e122111a9c7eda652dd177fa69ff91f35d903",
     "eslint-import-resolver-typescript": "2.5.0",
     "eslint-plugin-import": "2.25.2",
     "eslint-plugin-node": "11.1.0",
@@ -17,7 +17,7 @@
     "rimraf": "3.0.2",
     "typescript": "4.1.6"
   },
-  "homepage": "https://www.tinkermail.io",
+  "homepage": "https://www.sendstreak.com",
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
@@ -32,10 +32,10 @@
   ],
   "license": "Apache-2.0",
   "main": "index.js",
-  "name": "@tinkermail/tinkermail-node",
+  "name": "@sendstreak/sendstreak-node",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tinkermail/tinkermail-node.git"
+    "url": "https://github.com/sendstreak/sendstreak-node.git"
   },
   "scripts": {
     "build": "rimraf lib && tsc",
@@ -43,5 +43,5 @@
     "prepack": "npm run build"
   },
   "types": "./lib/index.d.ts",
-  "version": "2.2.1"
+  "version": "3.0.0"
 }

@@ -2,14 +2,14 @@ import type Contact from './Contact';
 import type { AttribType } from './Contact';
 import invokeAPI from './invokeAPI';
 
-export default class TinkerMail {
+export default class SendStreak {
     private readonly variables: Record<string, number | string> & { server: string } = {
-        server: 'https://api.tinkermail.io'
+        server: 'https://api.sendstreak.com'
     };
 
     public constructor(private readonly apiKey: string) {
         if (!apiKey) {
-            throw new Error('An API key is required to initialize the tinkermail SDK');
+            throw new Error('An API key is required to initialize the SendStreak SDK');
         }
     }
 
@@ -62,7 +62,7 @@ export default class TinkerMail {
         const { email } = contact;
 
         if (!email || !(/.+@.+\..+/u).exec(email)) {
-            throw new Error('Tinkermail contacts must have an \'email\' field with a valid email address.');
+            throw new Error('SendStreak contacts must have an \'email\' field with a valid email address.');
         }
 
         await invokeAPI(this.apiKey, this.variables.server, '/v1/contacts', contact);

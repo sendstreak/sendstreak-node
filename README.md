@@ -1,6 +1,6 @@
-# Tinkermail Node.js SDK
+# SendStreak Node.js SDK
 
-[Tinkermail](https://www.tinkermail.io) is a simple interface that lets you integrate quickly to Amazon SES, Gmail or any other SMTP server to send your transactional emails easily and pretty much for FREE.
+[SendStreak](https://www.sendstreak.com) is a simple interface that lets you integrate quickly to Amazon SES, Gmail or any other SMTP server to send your transactional emails easily and pretty much for FREE.
 
 ## New package!
 
@@ -9,17 +9,17 @@ Now with no dependencies and scoped package name!
 ## Installation
 
 ```sh
-$ npm install --save-exact @tinkermail/tinkermail-node
+$ npm install --save-exact @sendstreak/sendstreak-node
 ```
 
 ## Usage
 
 ```javascript
-const TinkerMail = require('@tinkermail/tinkermail-node');
-const tinkerMail = new TinkerMail('YOUR_API_KEY');
+const SendStreak = require('@sendstreak/sendstreak-node');
+const sendStreak = new SendStreak('YOUR_API_KEY');
 
-// Push your contacts to tinkermail with as many attributes as you want
-await tinkerMail.updateContact({
+// Push your contacts to SendStreak with as many attributes as you want
+await sendStreak.updateContact({
     email: 'johndoe@example.com',
     firstName: 'John',
     lastName: 'Doe',
@@ -27,7 +27,7 @@ await tinkerMail.updateContact({
 });
 
 // Send them emails using predefined templates
-await tinkerMail.sendMail('johndoe@example.com', 'customer-welcome-email', {
+await sendStreak.sendMail('johndoe@example.com', 'customer-welcome-email', {
     username: 'john_doe'
 });
 ```
