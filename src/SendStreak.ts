@@ -23,6 +23,19 @@ export default class SendStreak {
     }
 
     /**
+     * Sends an event to store for the provided contact.
+     *
+     * @param email The email address of the contact
+     * @param event The event (name)
+     */
+    public async sendEvent(email: string, event: string): Promise<void> {
+        await invokeAPI(this.apiKey, this.variables.server, '/v1/events', {
+            email,
+            slug: event
+        });
+    }
+
+    /**
      * Sends a single mail using the provided template.
      *
      * @param rcptAddress The email address of the recipient.
