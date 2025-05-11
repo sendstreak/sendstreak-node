@@ -42,7 +42,7 @@ export default function invokeAPI(
             }, response => {
                 response.setEncoding('utf8');
 
-                const responseBody = Buffer.from('');
+                const responseBody: string[] = [];
                 const { statusCode } = response;
 
                 if (statusCode === RESPONSE_UNAUTH) {
@@ -50,12 +50,12 @@ export default function invokeAPI(
                 }
 
                 response.on('data', (data: string) => {
-                    responseBody.write(data);
+                    responseBody.push(data);
                 });
 
                 response.on('end', () => {
                     resolve({
-                        body: responseBody.toString('utf8'),
+                        body: responseBody.join(''),
                         statusCode: statusCode!
                     });
                 });
