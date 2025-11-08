@@ -30,4 +30,15 @@ await sendStreak.updateContact({
 await sendStreak.sendMail('johndoe@example.com', 'customer-welcome-email', {
     username: 'john_doe'
 });
+
+// Send emails with attachments
+await sendStreak.sendMail('johndoe@example.com', 'customer-welcome-email', {
+    username: 'john_doe'
+}, [{
+    content: (await fs.readFile('[YOUR_FILE_PATH1]')).toString('base64'),
+    filename: 'text.txt'
+}, {
+    content: (await fs.readFile('[YOUR_FILE_PATH1]')).toString('base64'),
+    filename: 'image.png'
+}]);
 ```

@@ -45,9 +45,14 @@ export default class SendStreak {
     public async sendMail(
         rcptAddress: string,
         templateSlug: string,
-        variables: Record<string, AttribType>
+        variables: Record<string, AttribType>,
+        attachments?: {
+            content: string;
+            filename: string;
+        }[]
     ): Promise<void> {
         await invokeAPI(this.apiKey, this.variables.server, '/v1/messages', {
+            attachments,
             rcpt: rcptAddress,
             templateSlug,
             variables
