@@ -43,5 +43,5 @@
     "prepack": "npm run build"
   },
   "types": "./lib/index.d.ts",
-  "version": "3.2.0"
+  "version": "4.0.0"
 }

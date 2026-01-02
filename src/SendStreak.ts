@@ -1,5 +1,5 @@
-import type Contact from './Contact';
-import type { AttribType } from './Contact';
+import type SendStreakContact from './SendStreakContact';
+import type { AttribType } from './SendStreakContact';
 import invokeAPI from './invokeAPI';
 
 export default class SendStreak {
@@ -76,7 +76,7 @@ export default class SendStreak {
      *
      * @param contact The partial contact object to update (or create) the contact with.
      */
-    public async updateContact(contact: Contact): Promise<void> {
+    public async updateContact(contact: SendStreakContact): Promise<void> {
         const { email } = contact;
 
         if (!email || !(/.+@.+\..+/u).exec(email)) {

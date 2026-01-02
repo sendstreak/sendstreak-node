@@ -2,6 +2,8 @@
 import http from 'http';
 import https from 'https';
 
+import SendStreakError from './SendStreakError';
+
 const RESPONSE_UNAUTH = 401;
 
 export default function invokeAPI(
@@ -54,10 +56,14 @@ export default function invokeAPI(
                 });
 
                 response.on('end', () => {
-                    resolve({
-                        body: responseBody.join(''),
-                        statusCode: statusCode!
-                    });
+                    if (statusCode !== undefined && statusCode >= 200 && statusCode < 300) {
+                        resolve({
+                            body: responseBody.join(''),
+                            statusCode
+                        });
+                    } else {
+                        reject(new SendStreakError(statusCode, responseBody.join('')));
+                    }
                 });
             });
 
@@ -72,8 +78,7 @@ export default function invokeAPI(
 
             request.end();
         } catch (error) {
-            console.error(`Error invoking the SendStreak API. Error message: ${(error as Error).message}`);
-            throw error;
+            reject(error);
         }
     });
 }
